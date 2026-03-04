@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Results</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .result-item {
+            background: #f5f7ff;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+        
+        .result-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .option-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .vote-count {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .link a:hover {
+            text-decoration: underline;
+        }
+        
+        .total {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Voting Results</h1>
+        {% for option, count in votes.items() %}
+        <div class="result-item">
+            <div class="option-name">{{ option }}</div>
+            <div class="vote-count">{{ count }} votes</div>
+        </div>
+        {% endfor %}
+        <div class="total">
+            <strong>Total Votes:</strong> {{ votes.values() | sum }}
+        </div>
+        <div class="link">
+            <a href="/">← Back to Voting</a>
+        </div>
+    </div>
+</body>
+</html>
